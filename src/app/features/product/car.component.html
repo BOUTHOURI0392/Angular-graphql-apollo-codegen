@@ -1,0 +1,149 @@
+
+
+  <mat-drawer-container class="container">
+    <mat-drawer
+    #drawer
+    [(opened)]="openNavbar"
+      mode="over"
+      class="sidenav"
+      position="end"
+    >
+      <app-add-car 
+      *ngIf = "sideNavSelected == 'add'" 
+      (newCreateCarEvent)="addCar($event)"  
+      (closeEmitter)="closeNavbar()"
+      ></app-add-car>
+
+      <app-edit-car 
+      *ngIf = "sideNavSelected == 'edit'" 
+      [updateInput]="data"
+      (updateCarEvent)="updateCar($event)"
+      (closeEmitter)="closeNavbar()">
+      </app-edit-car>
+
+     
+
+
+     
+      
+  
+    </mat-drawer>
+    <mat-drawer
+    #drawer
+    [(opened)]="openNavbar"
+    mode="over"
+    class="leftBar"
+    position="start"
+    *ngIf = "sideNavSelected == 'edit'" 
+    >
+      
+      <app-left-bar [text]="'edit'" 
+      (filterEmitter)="filterCar($event)"
+      > 
+      </app-left-bar>
+    </mat-drawer>
+
+    <mat-drawer
+    #drawer
+    [(opened)]="openNavbar"
+    mode="over"
+    class="leftBar"
+    position="start"
+    *ngIf = "sideNavSelected == 'add'" 
+
+    >
+      
+      <app-left-bar     
+      [text]="'add'" 
+
+      > 
+      </app-left-bar>
+    </mat-drawer>
+
+   
+
+    
+    <mat-drawer-content>
+      <div class="createtBtnContainer">
+        <button
+          mat-stroked-button
+          type="submit"
+          (click)="drawer.toggle(); selectSideNav('add')"
+        >
+          Create product
+        </button>
+      </div>
+      <div class="table">
+        <table
+          mat-table
+          class="full-width-table"
+          matSort
+          [dataSource]="dataSource"
+          
+        >
+          <ng-container matColumnDef="name" class="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="name"  >
+              Name
+            </th>
+            <td mat-cell *matCellDef="let row" >{{ row.name }}</td>
+          </ng-container>
+  
+  
+          <ng-container matColumnDef="cost" class="cost">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="cost">
+              Cost
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.cost }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="price" class="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="price">
+              Price
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.price }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="created" class="created">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.created | date: "shortDate" }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="updated" class="updated">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.updated | date: "shortDate" }}
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="edit" class="edit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+            <td mat-cell *matCellDef="let row">
+              <div class="allBtn">
+                <span class="btn">
+                  <button
+                    mat-button
+                    class="editbtn"
+                   (click)="drawer.toggle(); selectSideNav('edit') "
+                  >
+                    Edit
+                  </button>
+                  <button
+                    mat-button
+                    class="deletebtn"
+                    type="submit"
+                    (click)="deleteCar(row._id)"
+                  >
+                    Delete
+                  </button>
+                </span>
+              </div>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>

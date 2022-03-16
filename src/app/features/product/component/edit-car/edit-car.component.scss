@@ -1,0 +1,72 @@
+@import"../../../../style/color/colors.scss";
+@import"../../../../style/variable/variables.scss";
+
+
+
+:host {
+    .add-product-container {
+      .inputForm {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 76px 0px 0px 30px;
+        margin-top: $input-form-margin-top;
+      }
+  
+      .input {
+        min-width: $input-with;
+      }
+  
+      .btn {
+        display: flex;
+        justify-content: flex-end;
+        gap: $gap-btn;
+        color: $color-text;
+        box-sizing: border-box;
+      }
+  
+      .save {
+        background-color: $color-btn-save;
+        color: $color-text;
+        border-radius: $border-radius;
+        width: $width-btn;
+        height: $height-btn;
+        vertical-align: middle;
+        line-height: $line-height;
+        &:disabled{
+          opacity: $button-opacity;
+        }
+      }
+      .cancel {
+        background-color: $color-btn-cancel;
+        color: $color-text;
+        border-radius: $border-radius;
+        width: $width-btn;
+        height: $height-btn;
+        vertical-align: middle;
+        line-height: $line-height;
+        padding-left: $btn-cancel-padding;
+      }
+      .head {
+        display: flex;
+        justify-content: flex-end;
+        gap: $gap-header;
+        margin-top: $margin-top-head;
+      }
+      .icon {
+        display: flex;
+        margin-right: $margin-icon-right;
+      }
+      .text {
+        color: $color-text-new-product;
+        font-weight: $font-weight-text;
+        margin-right: $margin-right-text-form;
+      }
+    }
+  
+    .span {
+      font-size: x-small;
+      color: $required-color;
+    }
+  }

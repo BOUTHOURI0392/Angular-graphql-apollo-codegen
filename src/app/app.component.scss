@@ -1,0 +1,23 @@
+@import "./style/color/colors.scss";
+@import "./style/variable/variables.scss";
+
+:host {
+    height: 100%;
+
+
+ .app-view{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+ 
+.app-side-bar{
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+}
+.view{
+    display: flex;
+}
+}
+

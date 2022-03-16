@@ -1,0 +1,32 @@
+<div class="add-product-container">
+    <span class="head">
+      <span class="text">Edit product</span>
+      <mat-icon class="icon" (click)="close()">highlight_off</mat-icon>
+    </span>
+    <div class="inputForm">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input type="text"  [(ngModel)]="editCar.name" matInput minlength="1" />
+      </mat-form-field>
+  
+  
+  
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Cost</mat-label>
+        <input type="number" [(ngModel)]="editCar.cost" min="0" matInput />
+      </mat-form-field>
+  
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Price</mat-label>
+        <input type="number" [(ngModel)]="editCar.price" min="0" matInput />
+  
+      </mat-form-field>
+  
+      <div class="btn">
+        <button mat-raised-button class="save" (click)="updateCar()" >
+          Save
+        </button>
+        <button mat-raised-button class="cancel" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>

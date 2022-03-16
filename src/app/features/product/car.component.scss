@@ -1,0 +1,139 @@
+@import"../../style/color/colors.scss";
+@import"../../style/variable/variables.scss";
+
+
+
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  
+    z-index: 1;
+    .container {
+      position: absolute;
+      width: 100%;
+      right: 0px;
+      height: 100%;
+      background-color: transparent;
+  
+      .sidenav {
+        min-width: $sidenav-width;
+      }
+
+      .leftBar{
+        min-width: 4%;
+        background-color: rgba(255, 255, 255, 0.767);
+        opacity: 0.9;
+      }
+  
+      ::ng-deep.mat-drawer-backdrop.mat-drawer-shown {
+        background-color: $backdrop-sidenav-color;
+      }
+      .createtBtnContainer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: $paddig-top-btnCreate;
+        padding-right: $padding;
+  
+        button {
+          background-color: $create-button-color;
+          box-sizing: border-box;
+          color: $button-color;
+          align-self: center;
+          font-style: normal;
+          font-weight: normal;
+          line-height: $line-height;
+          letter-spacing: $letter-spacing;
+          width: $create-button-width;
+          height: $create-button-height;
+        }
+      }
+  
+      div.table {
+        table.full-width-table {
+          flex: 1;
+          width: 100%;
+          padding-left: $padding;
+          padding-right: $padding;
+          font-size: $font-size-table;
+          font-style: normal;
+          font-size: $font-size-text;
+          line-height: $line-height;
+          letter-spacing: $letter-spacing;
+          margin-top: $margin-top-table;
+          tr {
+            &:nth-child(even) {
+              background-color: $child-table-color;
+            }
+  
+            th {
+              padding-top: $padding-top-th;
+              color: $color-th;
+              font-weight: normal;
+            }
+  
+            td {
+              border: none;
+              color: $color-td;
+              font-weight: $font-weight-td;
+            }
+  
+            th {
+              &:nth-child(1) {
+                width: $width-col-1;
+              }
+  
+              &:nth-child(2) {
+                width: $width-col-2;
+              }
+  
+              &:nth-child(3) {
+                width: $width-col-3;
+              }
+  
+              &:nth-child(4) {
+                width: $width-col-3;
+              }
+              &:nth-child(5) {
+                width: $width-col-3;
+              }
+              &:nth-child(6) {
+                width: $width-col-2;
+              }
+            
+            }
+  
+            .allBtn {
+              display: flex;
+              justify-content: flex-end;
+              box-sizing: border-box;
+              min-width: $min-width-all-button;
+  
+              button {
+                color: $button-color;
+                width: $btn-width;
+                height: $btn-heignt;
+                vertical-align: middle;
+                line-height: $line-height-btn;
+                font-size: $font-size-btn;
+                line-height: $line-height;
+                letter-spacing: $letter-spacing;
+                box-shadow: 0px 3px 10px $box-shadow-color;
+                padding-left: $padding-left-btn;
+  
+                &.deletebtn {
+                  background-color: $delete-btn-color;
+                  margin-left: $margin-left-delet-btn;
+                }
+  
+                &.editbtn {
+                  background-color: $edit-btn-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

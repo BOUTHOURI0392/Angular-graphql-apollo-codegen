@@ -1,0 +1,71 @@
+
+query findCars{
+    findAll{
+        _id
+        name
+        cost
+        price
+        created
+        updated
+    }
+    
+}
+
+
+mutation deleteOne($id : String!){
+  deleteCar(id : $id)  
+}
+
+
+mutation addInput(
+    $name : String!
+    $cost : Float!
+    $price : Float!
+    ){
+        create( createCar :{
+            name : $name
+            cost : $cost
+            price : $price
+        })
+        {
+            _id
+            name
+            cost
+            price
+        }
+    }
+    
+
+    mutation updatecar(
+        $id    : String!
+        $name  : String!
+        $cost  : Float!
+        $price : Float!
+        )
+        {
+            updateCar
+            ( updatecar :
+                {
+                name : $name
+                cost : $cost
+                price : $price
+                }
+            id: $id
+            )
+            {
+                _id
+               
+            }
+        }
+
+
+      query findOne($id: String!) {
+    car(id: $id) {
+      _id
+      name
+      cost
+      price
+      created
+      updated
+    }
+  }
