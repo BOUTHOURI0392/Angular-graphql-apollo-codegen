@@ -43,8 +43,6 @@ export class CarViewComponent implements AfterViewInit {
   loadCars() {
     return this.carService.showCars().subscribe((data) => {
       this.dataSource.data = data;
-      this.dataSource.filterPredicate =
-        (data: Car, filter: string) => data.name.indexOf(filter) != -1;
     });
   }
 
@@ -88,13 +86,13 @@ export class CarViewComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  
- 
-filterCar( filterValue : string){
-  this.dataSource.filter=filterValue.trim().toLocaleLowerCase();
-  console.log('filter')
 
-}
+
+  filterCar(filterValue: string) {
+    console.log('filter', filterValue)
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+
+  }
 
 }
 

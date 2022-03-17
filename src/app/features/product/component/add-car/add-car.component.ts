@@ -14,18 +14,18 @@ export class AddCarComponent implements OnInit {
   @Output() closeEmitter = new EventEmitter<object>();
 
 
-  
-   input = new Car();
+
+  input = new Car();
 
   ngOnInit(): void {
   }
 
 
-  addCar(){
+  addCar() {
     this.newCreateCarEvent.emit(this.input)
   }
 
-  close(){
+  close() {
     this.closeEmitter.emit()
   }
 }
