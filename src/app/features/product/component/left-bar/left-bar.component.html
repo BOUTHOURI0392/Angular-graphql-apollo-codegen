@@ -2,7 +2,7 @@
 
     <h2 *ngIf="text == 'add'" >   Create Your Car   </h2>
     <h2 *ngIf="text == 'edit'">   Edit  </h2>
-    <input *ngIf="text == 'edit'" id="input" type="text" placeholder="Search" class="search-input" [(ngModel)]= "dataFilter"  />
+    <input *ngIf="text == 'edit'" id="input" type="text" placeholder="Search" class="search-input" [(ngModel)]= "dataFilter" (keyup)="applyFilter()"  />
 
 
 

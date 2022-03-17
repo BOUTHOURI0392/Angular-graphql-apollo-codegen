@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 import { Car } from '../entities/car.entity';
 import { HttpHeaders } from '@angular/common/http';
 import { Apollo } from 'apollo-angular';
-import {DeleteOneDocument, FindCarsDocument, AddInputDocument, UpdatecarDocument, FindOneDocument} from '../type/types'
+import { DeleteOneDocument, FindCarsDocument, AddInputDocument, UpdatecarDocument, FindOneDocument } from '../type/types'
 
 
 @Injectable({
@@ -18,62 +18,66 @@ export class CarService {
     }),
   };
 
-  constructor(private http: HttpClient, private apollo : Apollo) { }
+  constructor(private http: HttpClient, private apollo: Apollo) { }
 
-  public showCars(){
+  public showCars() {
     return this.apollo.watchQuery<any>({
-      query:FindCarsDocument,
-      
-    }).valueChanges.pipe(map((result)=>{
+      query: FindCarsDocument,
+
+    }).valueChanges.pipe(map((result) => {
       return result.data.findAll;
     }));
   }
 
-  public deleteCar(id : string){
+  public deleteCar(id: string) {
     return this.apollo.mutate({
-      mutation : DeleteOneDocument,
+      mutation: DeleteOneDocument,
 
-      variables: {id : id},
-      refetchQueries : [
+      variables: { id: id },
+      refetchQueries: [
         {
-          query : FindCarsDocument
+          query: FindCarsDocument
         }
       ]
     })
   }
 
-  public createCar(input : Car){
+  public createCar(input: Car) {
     return this.apollo.mutate({
-      mutation : AddInputDocument,
+      mutation: AddInputDocument,
       variables: {
-        name : input.name,
-        cost : input.cost,
-        price : input.price,
+        name: input.name,
+        cost: input.cost,
+        price: input.price,
       },
 
-      refetchQueries : [{
-        query : FindCarsDocument
+      refetchQueries: [{
+        query: FindCarsDocument
       }]
     })
   }
 
-  public updateCar(input : Car){
+  public updateCar(input: Car) {
     return this.apollo.mutate({
-      mutation : UpdatecarDocument,
+      mutation: UpdatecarDocument,
       variables: {
-        id : input._id,
-        name : input.name,
-        cost : input.cost,
-        price : input.price,
+        id: input._id,
+        updatecar: {
+          id: input._id,
+          name: input.name,
+          cost: input.cost,
+          price: input.price,
+        }
+
       },
 
-      refetchQueries : [{
-        query : FindCarsDocument
+      refetchQueries: [{
+        query: FindCarsDocument
       }]
     })
   }
 
-  public getProduct(id: string){
+  public getProduct(id: string) {
     return this.apollo
       .watchQuery<any>({
         query: FindOneDocument,

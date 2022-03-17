@@ -13,16 +13,15 @@ export class LeftBarComponent implements OnInit {
   @Output() filterEmitter = new EventEmitter<string>();
 
 
- dataFilter !: string;
+  dataFilter !: string;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-applyFilter(){
-  this.filterEmitter.emit(this.dataFilter)
-}
- 
+  applyFilter() {
+    this.filterEmitter.emit(this.dataFilter)
+  }
 
 }
